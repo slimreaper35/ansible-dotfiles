@@ -3,6 +3,8 @@
 	email = msoltis@redhat.com 
 [init]
 	defaultBranch = main
+[pull]
+	rebase = true
 [core]
 	editor = nvim
 	excludesfile = ~/.gitignore
@@ -25,18 +27,18 @@
 	sw = switch
 	rh = reset --hard
 	rb = rebase
-	rbi = rebase --interactive HEAD~5
+	rbi = rebase --interactive HEAD~10
 	rbc = rebase --continue
 	rba = rebase --abort
-	lol = log --oneline
+	lol = log --oneline --graph
 	pum = pull upstream main
 	cms = commit --signoff
 	cma = commit --amend
 	cman = commit --amend --no-edit
 
 	compare = diff HEAD~1..HEAD
+	review = diff main..HEAD
 	download = fetch --all --prune
-	uncommit = reset --soft HEAD~1
 	unstage = restore --staged .
 
 	; dangerous !!!
@@ -46,3 +48,5 @@
 	paste = !git stash pop && git add . && git commit --amend --no-edit && git rebase --continue
 	incoming = !git checkout --ours . && git add .
 	current = !git checkout --theirs . && git add .
+	uncommit = !git reset --soft HEAD~1 && git restore --staged .
+	clear = !git reset --hard && git clean -f -d

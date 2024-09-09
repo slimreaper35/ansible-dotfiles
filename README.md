@@ -10,7 +10,7 @@ Make sure `git` and `ansible-core` are installed.
 Run the following commands:
 
 ```bash
-git clone https://github.com/slimreaper35/dotfiles.git
-cd dotfiles
-ansible-playbook playbook.yml --ask-become-pass
+git clone https://github.com/slimreaper35/ansible-dotfiles.git
+cd ansible-dotfiles
+ansible-playbook playbook.yml
 ```

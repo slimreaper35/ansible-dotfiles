@@ -1,23 +1,29 @@
 # Python
-alias py=python3
-alias ve='python3 -m venv venv'
+alias ve='python -m venv venv'
 alias va='source venv/bin/activate'
-alias de=deactivate
+alias de='deactivate'
+alias py='python'
+alias ipy='ipython'
 
 # Ansible
+alias ad='ansible-doc'
 alias ag='ansible-galaxy'
+alias ai='ansible-inventory'
 alias al='ansible-lint'
 alias ap='ansible-playbook'
+alias av='ansible-vault'
 
 # Other
-alias vim=nvim
-alias cat=bat
+alias vim='nvim'
+alias cat='bat'
 
 alias la='ls -a'
 alias ll='ls -l'
 
 alias upgrade='sudo dnf upgrade -y'
 alias autoremove='sudo dnf autoremove -y'
+
+alias decomment='grep --invert-match --extended-regexp "^[[:space:]]*((#|;|//).*)?$"'
 
 # Env
 export PIP_REQUIRE_VIRTUALENV=true
@@ -33,4 +39,4 @@ source ~/.git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
 
-PS1='[\u@\h \W$(__git_ps1)]\\$ '
+PS1='[\u@\h \W$(__git_ps1)]\$ '

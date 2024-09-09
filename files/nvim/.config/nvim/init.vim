@@ -8,19 +8,18 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'catppuccin/nvim'
 Plug 'tpope/vim-commentary'
 Plug 'farmergreg/vim-lastplace'
-Plug 'Yggdroot/indentLine'
 Plug 'lewis6991/gitsigns.nvim'
 
 call plug#end()
 
 filetype plugin indent on
 
-colorscheme catppuccin-frappe
+colorscheme catppuccin
 
 let g:python_highlight_all = 1
 
 set number
-set cc=100
+set colorcolumn=100
 set scrolloff=10
 set tabstop=4
 set shiftwidth=4
@@ -29,6 +28,8 @@ set foldlevel=100
 set nofoldenable
 set noswapfile
 set cursorcolumn
+
+autocmd FileType gitcommit setlocal colorcolumn=50,72
 
 " Exit insert mode
 imap jj <esc>

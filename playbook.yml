@@ -1,7 +1,7 @@
+---
 - name: Setup local environment
-  hosts: "{{ my_host | default('localhost') }}"
+  hosts: localhost
   connection: local
-  gather_facts: true
 
   vars:
     packages:
@@ -17,8 +17,6 @@
   tasks:
     - name: Ensure packages are installed
       become: true
-      become_user: root
-      become_method: ansible.builtin.su
       ansible.builtin.dnf:
         name: "{{ packages }}"
         state: present
@@ -40,4 +38,4 @@
     - name: Ensure neovim plugins are installed
       changed_when: false
       ansible.builtin.command:
-        cmd: "nvim +PlugInstall +qall"
+        cmd: "nvim +PlugUpgrade +PlugUpdate +PlugClean! +qall"
