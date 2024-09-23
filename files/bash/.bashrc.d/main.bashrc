@@ -5,9 +5,12 @@ alias va='source venv/bin/activate'
 alias de=deactivate
 
 # Ansible
+alias ad='ansible-doc'
 alias ag='ansible-galaxy'
+alias ai='ansible-inventory'
 alias al='ansible-lint'
 alias ap='ansible-playbook'
+alias av='ansible-vault'
 
 # Other
 alias vim=nvim
@@ -33,4 +36,4 @@ source ~/.git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
 
-PS1='[\u@\h \W$(__git_ps1)]\\$ '
+PS1='[\u@\h \W$(__git_ps1)]\$ '
