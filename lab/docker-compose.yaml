@@ -1,0 +1,16 @@
+services:
+  servera:
+    hostname: servera
+    container_name: servera
+    build:
+      context: .
+    ports:
+      - "2222:22"
+
+  serverb:
+    hostname: serverb
+    container_name: serverb
+    build:
+      context: .
+    ports:
+      - "2223:22"
