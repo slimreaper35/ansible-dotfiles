@@ -15,13 +15,9 @@ alias av='ansible-vault'
 
 # Other
 alias vim='nvim'
-alias cat='bat'
 
 alias la='ls -a'
 alias ll='ls -l'
-
-alias upgrade='sudo dnf upgrade -y'
-alias autoremove='sudo dnf autoremove -y'
 
 alias decomment='grep --invert-match --extended-regexp "^[[:space:]]*((#|;|//).*)?$"'
 

@@ -3,6 +3,8 @@
 	email = msoltis@redhat.com 
 [init]
 	defaultBranch = main
+[log]
+	date = local
 [pull]
 	rebase = true
 [core]
@@ -18,12 +20,15 @@
 	smtpUser = soltis.miso@gmail.com
 	smtpServerPort = 587
 [alias]
+	rl = reflog --date local
 	br = branch
 	st = status
 	aa = add --all .
 	cm = commit --signoff --message
 	cp = cherry-pick
 	co = checkout
+	sp = stash pop
+	sl = stash list
 	sw = switch
 	rh = reset --hard
 	rb = rebase
@@ -50,3 +55,4 @@
 	current = !git checkout --theirs . && git add .
 	uncommit = !git reset --soft HEAD~1 && git restore --staged .
 	clear = !git reset --hard && git clean -f -d
+	rename = !git push --delete origin $1 && git branch --move $1 $2 && git push --set-upstream origin $2
