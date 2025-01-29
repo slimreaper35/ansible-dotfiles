@@ -10,6 +10,7 @@
 [core]
 	editor = nvim
 	excludesfile = ~/.gitignore
+	hooksPath = ~/hooks
 [commit]
 	gpgsign = true
 [credential]
@@ -20,6 +21,7 @@
 	smtpUser = soltis.miso@gmail.com
 	smtpServerPort = 587
 [alias]
+	; basic aliases
 	rl = reflog --date local
 	br = branch
 	st = status
@@ -27,8 +29,9 @@
 	cm = commit --signoff --message
 	cp = cherry-pick
 	co = checkout
-	sp = stash pop
+	sc = stash clear
 	sl = stash list
+	sp = stash pop
 	sw = switch
 	rh = reset --hard
 	rb = rebase
@@ -41,6 +44,8 @@
 	cma = commit --amend
 	cman = commit --amend --no-edit
 
+	; verbose aliases
+	hide = stash --include-untracked
 	compare = diff HEAD~1..HEAD
 	review = diff main..HEAD
 	download = fetch --all --prune

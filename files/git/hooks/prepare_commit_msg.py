@@ -18,7 +18,10 @@ import openai
 
 API_KEY = os.getenv("OPENAI_API_KEY")
 BASE_URL = "https://api.deepseek.com"
-MODEL = "deepseek-reasoner"
+
+# https://api-docs.deepseek.com/quick_start/pricing
+MODELS = frozenset({"deepseek-reasoner", "deepseek-chat"})
+DEFAULT_MODEL = "deepseek-chat"
 
 
 def get_repo_root() -> str:
@@ -66,7 +69,7 @@ def generate_commit_message() -> str:
     client = openai.OpenAI(api_key=API_KEY, base_url=BASE_URL)
 
     response = client.chat.completions.create(
-        model=MODEL,
+        model=DEFAULT_MODEL,
         messages=[
             {"role": "system", "content": "You are a git bot."},
             {"role": "user", "content": prompt},
