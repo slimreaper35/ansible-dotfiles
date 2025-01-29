@@ -6,13 +6,17 @@
   vars:
     packages:
       - bat
+      - cargo
       - dconf
       - gh
       - make
       - neovim
       - ripgrep
+      - ruff
+      - rustc
       - stow
       - tmux
+      - uv
 
   tasks:
     - name: Ensure packages are installed

@@ -5,11 +5,14 @@
 	defaultBranch = main
 [log]
 	date = local
+[diff]
+	colorMoved = dimmed-zebra
 [pull]
 	rebase = true
 [core]
 	editor = nvim
 	excludesfile = ~/.gitignore
+	hooksPath = ~/hooks
 [commit]
 	gpgsign = true
 [credential]
@@ -27,9 +30,14 @@
 	cm = commit --signoff --message
 	cp = cherry-pick
 	co = checkout
-	sp = stash pop
+	pt = push --tags
+	sc = stash clear
 	sl = stash list
+	sp = stash pop
 	sw = switch
+	wl = worktree list
+	wa = worktree add
+	wr = worktree remove
 	rh = reset --hard
 	rb = rebase
 	rbi = rebase --interactive HEAD~10
@@ -41,7 +49,8 @@
 	cma = commit --amend
 	cman = commit --amend --no-edit
 
-	compare = diff HEAD~1..HEAD
+	; verbose aliases
+	hide = stash --include-untracked
 	review = diff main..HEAD
 	download = fetch --all --prune
 	unstage = restore --staged .
@@ -54,5 +63,5 @@
 	incoming = !git checkout --ours . && git add .
 	current = !git checkout --theirs . && git add .
 	uncommit = !git reset --soft HEAD~1 && git restore --staged .
-	clear = !git reset --hard && git clean -f -d
-	rename = !git push --delete origin $1 && git branch --move $1 $2 && git push --set-upstream origin $2
+	clear = !git reset --hard && git clean -ffd
+	lines = !git ls-files | xargs wc -l | sort -n
