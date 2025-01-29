@@ -1,4 +1,4 @@
-CONFIG_DIRS = applications backgrounds bash dirs fonts git nvim tmux
+CONFIG_DIRS = applications backgrounds bash dirs fonts git markdown nvim tmux
 
 all:
 	stow --verbose --restow --target=$(HOME) $(CONFIG_DIRS)
