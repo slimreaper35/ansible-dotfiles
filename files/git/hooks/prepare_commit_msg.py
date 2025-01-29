@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 """
 Git hook to generate commit messages using AI.
@@ -18,7 +18,10 @@ import openai
 
 API_KEY = os.getenv("OPENAI_API_KEY")
 BASE_URL = "https://api.deepseek.com"
-MODEL = "deepseek-reasoner"
+
+# https://api-docs.deepseek.com/quick_start/pricing
+MODELS = frozenset({"deepseek-reasoner", "deepseek-chat"})
+DEFAULT_MODEL = "deepseek-reasoner"
 
 
 def get_repo_root() -> str:
@@ -50,7 +53,6 @@ def generate_commit_message() -> str:
     prompt = f"""
     Please follow these guidelines and provide a commit message:
     - Use only the imperative mood
-    - Add an emoji prefix to the title
     - Title must have a maximum of 50 characters
     - Separate the title from the body with a blank line
     - Each line in the body must have a maximum of 72 characters
@@ -63,12 +65,13 @@ def generate_commit_message() -> str:
     {diff.stdout}
     """
 
+    # TODO: change this to ollama
     client = openai.OpenAI(api_key=API_KEY, base_url=BASE_URL)
 
     response = client.chat.completions.create(
-        model=MODEL,
+        model=DEFAULT_MODEL,
         messages=[
-            {"role": "system", "content": "You are a git bot."},
+            {"role": "system", "content": "You are a senior principal software engineer"},
             {"role": "user", "content": prompt},
         ],
         stream=False,
@@ -86,14 +89,14 @@ def main() -> None:
     Main function.
     """
     commit_editmsg = pathlib.Path(sys.argv[1])
-    original_content = commit_editmsg.read_text()
+    commentary = commit_editmsg.read_text()
 
     # if the commit message is not empty, do not generate a new one
-    if original_content.splitlines()[0] != "":
+    if commentary.splitlines()[0] != "":
         return
 
     ai_content = generate_commit_message()
-    commit_editmsg.write_text(ai_content + original_content)
+    commit_editmsg.write_text(ai_content + commentary)
 
 
 if __name__ == "__main__":
