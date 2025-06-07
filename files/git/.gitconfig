@@ -12,7 +12,6 @@
 [core]
 	editor = nvim
 	excludesfile = ~/.gitignore
-	hooksPath = ~/hooks
 [commit]
 	gpgsign = true
 [credential]

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Python
 alias ve='python3 -m venv venv'
@@ -41,4 +41,9 @@ source ~/.git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 
-PS1='[\u@\h \W$(__git_ps1)]\$ '
+# Enable completions on macOS
+autoload -Uz compinit
+compinit
+rm -f ~/.zcompdump; compinit
+
+PS1='[%n@%m %1~$(__git_ps1)]\$ '
