@@ -5,6 +5,7 @@
 
   vars:
     packages:
+      # sorted alphabetically
       - bat
       - cargo
       - dconf
@@ -21,7 +22,7 @@
   tasks:
     - name: Ensure packages are installed
       become: true
-      ansible.builtin.dnf:
+      ansible.builtin.package:
         name: "{{ packages }}"
         state: present
 

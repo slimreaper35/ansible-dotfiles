@@ -1,67 +1,75 @@
 [user]
 	name = Michal Šoltis
 	email = msoltis@redhat.com 
-[init]
-	defaultBranch = main
-[log]
-	date = local
-[diff]
-	colorMoved = dimmed-zebra
-[pull]
-	rebase = true
+
 [core]
 	editor = nvim
 	excludesfile = ~/.gitignore
-	hooksPath = ~/hooks
+
+[init]
+	defaultBranch = main
+
+[log]
+	date = local
+
+[diff]
+	colorMoved = dimmed-zebra
+
+[pull]
+	rebase = true
+
 [commit]
 	gpgsign = true
+
 [credential]
 	helper = store
+
 [sendemail]
-	smtpencryption = tls
 	smtpServer = smtp.gmail.com
-	smtpUser = soltis.miso@gmail.com
 	smtpServerPort = 587
+	smtpUser = soltis.miso@gmail.com
+	smtpencryption = tls
+
 [alias]
-	rl = reflog --date local
-	br = branch
-	st = status
+	; common
 	aa = add --all .
-	cm = commit --signoff --message
-	cp = cherry-pick
+	br = branch
 	co = checkout
-	pt = push --tags
+	cm = commit --signoff --message
+	cma = commit --amend
+	cman = commit --amend --no-edit
+	cms = commit --signoff
+	cp = cherry-pick
+	lol = log --oneline --graph
+	pum = pull upstream main
+	put = push upstream --tags
+	rb = rebase
+	rba = rebase --abort
+	rbc = rebase --continue
+	rbi = rebase --interactive HEAD~10
+	rh = reset --hard
+	rl = reflog --date local
 	sc = stash clear
 	sl = stash list
 	sp = stash pop
+	st = status
 	sw = switch
-	wl = worktree list
 	wa = worktree add
+	wl = worktree list
 	wr = worktree remove
-	rh = reset --hard
-	rb = rebase
-	rbi = rebase --interactive HEAD~10
-	rbc = rebase --continue
-	rba = rebase --abort
-	lol = log --oneline --graph
-	pum = pull upstream main
-	cms = commit --signoff
-	cma = commit --amend
-	cman = commit --amend --no-edit
 
-	; verbose aliases
+	; verbose
+	download = fetch --all --prune
 	hide = stash --include-untracked
 	review = diff main..HEAD
-	download = fetch --all --prune
 	unstage = restore --staged .
 
-	; dangerous !!!
-	; use with caution
-	rewrite = !git add . && git commit --amend --no-edit && git push --force
-	update = !git switch main && git pull upstream main && git push && git switch - && git rebase main
-	paste = !git stash pop && git add . && git commit --amend --no-edit && git rebase --continue
-	incoming = !git checkout --ours . && git add .
-	current = !git checkout --theirs . && git add .
-	uncommit = !git reset --soft HEAD~1 && git restore --staged .
+	; dangerous
 	clear = !git reset --hard && git clean -ffd
+	current = !git checkout --theirs . && git add .
+	incoming = !git checkout --ours . && git add .
 	lines = !git ls-files | xargs wc -l | sort -n
+	paste = !git stash pop && git add . && git commit --amend --no-edit && git rebase --continue
+	rewrite = !git add . && git commit --amend --no-edit && git push --force
+	uncommit = !git reset --soft HEAD~1 && git restore --staged .
+	update = !git switch main && git pull upstream main && git push && git switch - && git rebase main
