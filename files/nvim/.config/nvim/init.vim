@@ -14,8 +14,6 @@ call plug#end()
 
 filetype plugin indent on
 
-colorscheme catppuccin
-
 let g:python_highlight_all = 1
 
 set number
