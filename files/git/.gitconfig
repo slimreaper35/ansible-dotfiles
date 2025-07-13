@@ -49,6 +49,7 @@
 	rbi = rebase --interactive HEAD~10
 	rh = reset --hard
 	rl = reflog --date local
+	rv = remote --verbose
 	sc = stash clear
 	sl = stash list
 	sp = stash pop
