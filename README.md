@@ -6,11 +6,12 @@ them.
 
 ## Installation
 
-Make sure `git` and `ansible-core` are installed.
+Make sure `git` and `ansible` are installed.
 
 Run the following commands:
 
 ```bash
+sudo passwd root
 git clone https://github.com/slimreaper35/ansible-dotfiles.git
 cd ansible-dotfiles
 ansible-playbook playbook.yml

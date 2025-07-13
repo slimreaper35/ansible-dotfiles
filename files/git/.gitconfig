@@ -41,6 +41,7 @@
 	cms = commit --signoff
 	cp = cherry-pick
 	lol = log --oneline --graph
+	pot = push origin --tags
 	pum = pull upstream main
 	put = push upstream --tags
 	rb = rebase
@@ -49,6 +50,7 @@
 	rbi = rebase --interactive HEAD~10
 	rh = reset --hard
 	rl = reflog --date local
+	rv = remote --verbose
 	sc = stash clear
 	sl = stash list
 	sp = stash pop
@@ -70,6 +72,7 @@
 	incoming = !git checkout --ours . && git add .
 	lines = !git ls-files | xargs wc -l | sort -n
 	paste = !git stash pop && git add . && git commit --amend --no-edit && git rebase --continue
+	release = !git log --oneline $(git describe --tags --abbrev=0)..HEAD
 	rewrite = !git add . && git commit --amend --no-edit && git push --force
 	uncommit = !git reset --soft HEAD~1 && git restore --staged .
 	update = !git switch main && git pull upstream main && git push && git switch - && git rebase main
