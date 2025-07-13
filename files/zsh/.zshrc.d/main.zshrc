@@ -29,8 +29,18 @@ alias decomment='grep --invert-match --extended-regexp "^[[:space:]]*((#|;|//).*
 export GOPATH=$HOME/.go
 export PIP_REQUIRE_VIRTUALENV=true
 export EDITOR=/usr/bin/nvim
-export HISTFILESIZE=100000
+
 export HISTSIZE=100000
+export SAVEHIST=100000
+
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY
 
 # Prompt
 if ! [ -f ~/.git-prompt.sh ]; then

@@ -7,22 +7,28 @@
     packages:
       # sorted alphabetically
       - bat
-      - cargo
-      - dconf
+      - eza
+      - fd
       - gh
+      - go
+      - ipython
+      - jq
       - make
       - neovim
-      - ripgrep
+      - node
+      - nox
+      - podman
+      - pre-commit
       - ruff
-      - rustc
+      - rust
       - stow
       - tmux
       - uv
+      - wget
 
   tasks:
     - name: Ensure packages are installed
-      become: true
-      ansible.builtin.package:
+      community.general.homebrew:
         name: "{{ packages }}"
         state: present
 
@@ -33,12 +39,10 @@
         cmd: make
 
     - name: Ensure neovim plugin manager is installed
-      ansible.builtin.get_url:
-        url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-        dest: "{{ ansible_env.HOME }}/.local/share/nvim/site/autoload/plug.vim"
-        owner: "{{ ansible_env.USER }}"
-        group: "{{ ansible_env.USER }}"
-        mode: "0644"
+      changed_when: false
+      ansible.builtin.command:
+        cmd: sh -c 'curl -fLo "$HOME/.local/share/nvim/site/autoload/plug.vim" \
+          --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
     - name: Ensure neovim plugins are installed
       changed_when: false

@@ -1,4 +1,4 @@
-CONFIG_DIRS = applications backgrounds bash dirs fonts git nvim tmux zsh
+CONFIG_DIRS = backgrounds bash fonts git nvim tmux zsh
 
 .PHONY: all clean profiles
 
@@ -7,6 +7,3 @@ all:
 
 clean:
 	stow --verbose --delete --target=$(HOME) $(CONFIG_DIRS)
-
-profiles:
-	dconf load /org/gnome/terminal/ < terminal-profiles.dconf
